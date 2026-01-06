@@ -1,0 +1,9 @@
+# =============================================================================
+# WARNING: INTENTIONALLY VULNERABLE DEPENDENCIES - FOR EDUCATIONAL PURPOSES ONLY
+# =============================================================================
+# This file contains dependencies for the vulnerable Python demo code.
+# DO NOT install these in a production environment!
+# =============================================================================
+
+flask>=2.0.0
+requests>=2.25.0
