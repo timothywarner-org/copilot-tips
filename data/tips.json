@@ -1,0 +1,258 @@
+{
+  "tips": [
+    {
+      "id": 1,
+      "title": "Accept Suggestions with Tab",
+      "description": "Press Tab to accept a full inline suggestion from GitHub Copilot. This is the primary way to incorporate Copilot's code completions into your work.",
+      "topic": "shortcuts",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/getting-code-suggestions-in-your-ide-with-github-copilot"
+    },
+    {
+      "id": 2,
+      "title": "Cycle Through Suggestions",
+      "description": "Use Alt+] (or Option+]) to see the next suggestion and Alt+[ (or Option+[) to see the previous suggestion when Copilot offers multiple completions.",
+      "topic": "shortcuts",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/getting-code-suggestions-in-your-ide-with-github-copilot"
+    },
+    {
+      "id": 3,
+      "title": "Accept Word by Word",
+      "description": "Press Ctrl+Right Arrow (or Cmd+Right Arrow on Mac) to accept a suggestion word by word, giving you more granular control over what code you incorporate.",
+      "topic": "shortcuts",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/getting-code-suggestions-in-your-ide-with-github-copilot"
+    },
+    {
+      "id": 4,
+      "title": "Dismiss Suggestions with Escape",
+      "description": "Press Escape to dismiss the current suggestion if it's not what you need. Copilot will offer new suggestions as you continue typing.",
+      "topic": "shortcuts",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/getting-code-suggestions-in-your-ide-with-github-copilot"
+    },
+    {
+      "id": 5,
+      "title": "Open Copilot Chat with Keyboard",
+      "description": "Press Ctrl+Alt+I (or Cmd+Alt+I on Mac) in VS Code to quickly open the Copilot Chat panel and start a conversation about your code.",
+      "topic": "chat",
+      "url": "https://code.visualstudio.com/docs/copilot/copilot-chat"
+    },
+    {
+      "id": 6,
+      "title": "Use Inline Chat for Quick Edits",
+      "description": "Press Ctrl+I (or Cmd+I on Mac) to open inline chat directly in your editor. This is perfect for quick code modifications without leaving your current context.",
+      "topic": "chat",
+      "url": "https://code.visualstudio.com/docs/copilot/copilot-chat"
+    },
+    {
+      "id": 7,
+      "title": "Write Descriptive Comments First",
+      "description": "Write a clear comment describing what you want to accomplish before writing code. Copilot uses these comments as context to generate more accurate suggestions.",
+      "topic": "prompts",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "id": 8,
+      "title": "Use @workspace for Project Context",
+      "description": "In Copilot Chat, use @workspace to ask questions about your entire codebase. Copilot will search and analyze relevant files to provide context-aware answers.",
+      "topic": "chat",
+      "url": "https://code.visualstudio.com/docs/copilot/workspace-context"
+    },
+    {
+      "id": 9,
+      "title": "Reference Files with #file",
+      "description": "Use #file:filename in Copilot Chat to explicitly include a specific file as context for your question or request.",
+      "topic": "chat",
+      "url": "https://code.visualstudio.com/docs/copilot/copilot-chat"
+    },
+    {
+      "id": 10,
+      "title": "Use /explain to Understand Code",
+      "description": "Select code and use /explain in Copilot Chat to get a detailed explanation of what the code does. Great for understanding unfamiliar codebases.",
+      "topic": "chat",
+      "url": "https://code.visualstudio.com/docs/copilot/copilot-chat"
+    },
+    {
+      "id": 11,
+      "title": "Fix Code with /fix",
+      "description": "Select problematic code and use /fix in Copilot Chat to get suggestions for fixing bugs, errors, or improving code quality.",
+      "topic": "chat",
+      "url": "https://code.visualstudio.com/docs/copilot/copilot-chat"
+    },
+    {
+      "id": 12,
+      "title": "Generate Tests with /tests",
+      "description": "Use /tests in Copilot Chat to automatically generate unit tests for your selected code. Copilot will create tests appropriate for your testing framework.",
+      "topic": "chat",
+      "url": "https://code.visualstudio.com/docs/copilot/copilot-chat"
+    },
+    {
+      "id": 13,
+      "title": "Provide Examples in Your Prompts",
+      "description": "Include examples of the input/output you expect when asking Copilot to generate code. Examples help Copilot understand your exact requirements.",
+      "topic": "prompts",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "id": 14,
+      "title": "Keep Related Files Open",
+      "description": "Keep relevant files open in your editor tabs. Copilot uses open files as additional context to provide more accurate and consistent suggestions.",
+      "topic": "completions",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/getting-code-suggestions-in-your-ide-with-github-copilot"
+    },
+    {
+      "id": 15,
+      "title": "Use Meaningful Variable Names",
+      "description": "Use descriptive variable and function names. Copilot analyzes naming patterns to understand your intent and generate more relevant code.",
+      "topic": "prompts",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "id": 16,
+      "title": "Break Down Complex Tasks",
+      "description": "Break complex problems into smaller, well-defined steps. Ask Copilot to help with each step individually for better results.",
+      "topic": "prompts",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "id": 17,
+      "title": "Use @terminal for CLI Help",
+      "description": "Use @terminal in Copilot Chat to get help with command-line operations, shell scripts, and terminal commands specific to your environment.",
+      "topic": "agents",
+      "url": "https://code.visualstudio.com/docs/copilot/copilot-chat"
+    },
+    {
+      "id": 18,
+      "title": "Generate Documentation with /doc",
+      "description": "Select a function or class and use /doc to generate documentation comments. Copilot will create appropriate JSDoc, docstrings, or other format documentation.",
+      "topic": "chat",
+      "url": "https://code.visualstudio.com/docs/copilot/copilot-chat"
+    },
+    {
+      "id": 19,
+      "title": "Specify Language and Framework",
+      "description": "When asking Copilot for help, specify the programming language and framework you're using for more targeted and accurate suggestions.",
+      "topic": "prompts",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "id": 20,
+      "title": "Use #selection for Current Selection",
+      "description": "Reference #selection in Copilot Chat to explicitly include your currently selected code as context for your question.",
+      "topic": "chat",
+      "url": "https://code.visualstudio.com/docs/copilot/copilot-chat"
+    },
+    {
+      "id": 21,
+      "title": "Review and Validate Suggestions",
+      "description": "Always review Copilot suggestions before accepting them. Verify the code is correct, secure, and follows your project's coding standards.",
+      "topic": "completions",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/best-practices-for-using-github-copilot"
+    },
+    {
+      "id": 22,
+      "title": "Iterate on Your Prompts",
+      "description": "If Copilot's first response isn't quite right, refine your prompt with more specific details or constraints. Good prompts often require iteration.",
+      "topic": "prompts",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "id": 23,
+      "title": "Use Smart Actions in Editor",
+      "description": "Right-click on code in VS Code to access Copilot smart actions like 'Explain This', 'Fix This', and 'Generate Docs' directly from the context menu.",
+      "topic": "completions",
+      "url": "https://code.visualstudio.com/docs/copilot/copilot-chat"
+    },
+    {
+      "id": 24,
+      "title": "Leverage Copilot for Refactoring",
+      "description": "Ask Copilot Chat to refactor code for better readability, performance, or to follow specific design patterns. Describe the refactoring goals clearly.",
+      "topic": "chat",
+      "url": "https://code.visualstudio.com/docs/copilot/copilot-chat"
+    },
+    {
+      "id": 25,
+      "title": "Use @vscode for Editor Questions",
+      "description": "Use @vscode in Copilot Chat to ask questions about VS Code features, settings, extensions, and how to accomplish tasks in the editor.",
+      "topic": "agents",
+      "url": "https://code.visualstudio.com/docs/copilot/copilot-chat"
+    },
+    {
+      "id": 26,
+      "title": "Trigger Suggestions Manually",
+      "description": "Press Ctrl+Space (or Cmd+Space on Mac) to manually trigger Copilot suggestions when they don't appear automatically.",
+      "topic": "shortcuts",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/getting-code-suggestions-in-your-ide-with-github-copilot"
+    },
+    {
+      "id": 27,
+      "title": "Use Function Signatures as Context",
+      "description": "Write the function signature (name, parameters, return type) first. Copilot will use this information to generate an appropriate implementation.",
+      "topic": "completions",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "id": 28,
+      "title": "Include Edge Cases in Comments",
+      "description": "Mention edge cases and error handling requirements in your comments. Copilot will incorporate these considerations into the generated code.",
+      "topic": "prompts",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "id": 29,
+      "title": "Use Copilot in Pull Request Reviews",
+      "description": "GitHub Copilot can help review pull requests on GitHub.com, providing summaries and suggesting improvements to code changes.",
+      "topic": "agents",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/using-github-copilot-for-pull-requests"
+    },
+    {
+      "id": 30,
+      "title": "Start New Chat for New Topics",
+      "description": "Start a new chat conversation when switching to a different topic or task. This prevents context from previous conversations from affecting new responses.",
+      "topic": "chat",
+      "url": "https://code.visualstudio.com/docs/copilot/copilot-chat"
+    },
+    {
+      "id": 31,
+      "title": "Use #codebase for Broad Searches",
+      "description": "Use #codebase in Copilot Chat to search across your entire codebase when you need to find patterns, implementations, or understand project-wide conventions.",
+      "topic": "chat",
+      "url": "https://code.visualstudio.com/docs/copilot/workspace-context"
+    },
+    {
+      "id": 32,
+      "title": "Specify Constraints in Prompts",
+      "description": "Include constraints like time complexity, memory usage, or specific libraries to use. Clear constraints help Copilot generate code that meets your requirements.",
+      "topic": "prompts",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot"
+    },
+    {
+      "id": 33,
+      "title": "Use Copilot CLI for Terminal",
+      "description": "Install GitHub Copilot CLI to get AI assistance directly in your terminal. Use 'gh copilot suggest' and 'gh copilot explain' for command-line help.",
+      "topic": "agents",
+      "url": "https://docs.github.com/en/copilot/using-github-copilot/using-github-copilot-in-the-command-line"
+    },
+    {
+      "id": 34,
+      "title": "Create a .github/copilot-instructions.md",
+      "description": "Add a copilot-instructions.md file to your repository's .github folder to provide project-specific context and coding guidelines that Copilot will follow.",
+      "topic": "agents",
+      "url": "https://docs.github.com/en/copilot/customizing-copilot/adding-repository-instructions-for-github-copilot"
+    },
+    {
+      "id": 35,
+      "title": "Use Quick Fix for Error Resolution",
+      "description": "When you see a code error, click the lightbulb icon or press Ctrl+. to see Copilot's Quick Fix suggestions for resolving the issue.",
+      "topic": "completions",
+      "url": "https://code.visualstudio.com/docs/copilot/copilot-chat"
+    }
+  ],
+  "metadata": {
+    "totalTips": 35,
+    "topics": ["shortcuts", "chat", "completions", "prompts", "agents"],
+    "lastUpdated": "2025-01-06",
+    "sources": [
+      "https://docs.github.com/en/copilot",
+      "https://code.visualstudio.com/docs/copilot"
+    ]
+  }
+}
