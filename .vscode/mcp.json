@@ -2,8 +2,7 @@
   "servers": {
     "github-vscode-repo": {
       "type": "http",
-      "url": "https://api.githubcopilot.com/mcp/",
-      "description": "GitHub MCP Server (Remote) - Access GitHub repositories, issues, pull requests, discussions, and Copilot Spaces"
+      "url": "https://api.githubcopilot.com/mcp/"
     }
   },
   "inputs": [
