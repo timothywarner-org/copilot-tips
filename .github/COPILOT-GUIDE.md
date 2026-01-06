@@ -10,17 +10,17 @@ This repository contains comprehensive Copilot instructions, prompt files, custo
 ### Prompt Files (`.github/prompts/`)
 Reusable prompts for specific tasks in Copilot Chat:
 
-1. **[create-tip.md](.github/prompts/create-tip.md)**
+1. **[create-tip.prompt.md](.github/prompts/create-tip.prompt.md)**
    - Generate new GitHub Copilot tips for the database
    - Guides AI through tip structure and quality standards
    - Includes topic categories and best practices
 
-2. **[debug-api.md](.github/prompts/debug-api.md)**
+2. **[debug-api.prompt.md](.github/prompts/debug-api.prompt.md)**
    - Debug and test API endpoints
    - Key debugging scenarios (random selection, topic filtering, ID coercion)
    - Test commands and error handling guidance
 
-3. **[plan-feature.md](.github/prompts/plan-feature.md)**
+3. **[plan-feature.prompt.md](.github/prompts/plan-feature.prompt.md)**
    - Feature planning without code
    - Handoff to implementation agent when ready
    - Comprehensive planning template and success criteria
@@ -28,13 +28,13 @@ Reusable prompts for specific tasks in Copilot Chat:
 ### Custom Agents (`.github/agents/`)
 Specialized AI agents configured with tools and instructions:
 
-1. **[tip-creator.md](.github/agents/tip-creator.md)**
+1. **[tip-creator.agent.md](.github/agents/tip-creator.agent.md)**
    - Expert agent for creating and validating Copilot tips
    - Handles research, validation, and formatting
    - Enforces quality standards and documentation links
    - Handoff to database agent for persistence
 
-2. **[api-tester.md](.github/agents/api-tester.md)**
+2. **[api-tester.agent.md](.github/agents/api-tester.agent.md)**
    - Expert agent for API testing and validation
    - Tests all endpoints and edge cases
    - Covers error handling and code quality checks
@@ -113,12 +113,12 @@ Use these when creating new files or referencing in code:
 .github/
 ├── copilot-instructions.md              # Main guidance (required)
 ├── prompts/
-│   ├── create-tip.md                    # Tip creation workflow
-│   ├── debug-api.md                     # API debugging guide
-│   └── plan-feature.md                  # Feature planning
+│   ├── create-tip.prompt.md             # Tip creation workflow
+│   ├── debug-api.prompt.md              # API debugging guide
+│   └── plan-feature.prompt.md           # Feature planning
 ├── agents/
-│   ├── tip-creator.md                   # Tip creation agent
-│   └── api-tester.md                    # API testing agent
+│   ├── tip-creator.agent.md             # Tip creation agent
+│   └── api-tester.agent.md              # API testing agent
 └── instructions/
     ├── javascript-standards.instructions.md    # JS/Node.js standards
     └── testing-standards.instructions.md       # Mocha/Chai standards

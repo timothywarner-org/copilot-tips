@@ -2,7 +2,6 @@
 name: APITester
 description: Test and validate the Copilot Tips API endpoints
 tools: ['fetch', 'githubRepo', 'search']
-model: Claude Sonnet 4
 handoffs:
   - label: Fix Issues
     agent: agent

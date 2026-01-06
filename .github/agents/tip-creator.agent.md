@@ -2,7 +2,6 @@
 name: TipCreator
 description: Create and validate new GitHub Copilot tips
 tools: ['search', 'fetch']
-model: Claude Sonnet 4
 handoffs:
   - label: Add to Database
     agent: agent
