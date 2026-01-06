@@ -39,8 +39,8 @@ Defines available MCP servers and their connection details:
   "servers": {
     "github": {
       "type": "http",
-      "url": "https://api.github.com/mcp",
-      "description": "GitHub MCP Server for accessing GitHub repositories, issues, pull requests, and discussions"
+      "url": "https://api.githubcopilot.com/mcp/",
+      "description": "GitHub MCP Server (Remote) - Access GitHub repositories, issues, pull requests, discussions, and Copilot Spaces"
     }
   }
 }
@@ -136,7 +136,7 @@ Analyze discussions about GitHub Copilot in popular repos
 {
   "github": {
     "type": "http",
-    "url": "https://api.github.com/mcp",
+    "url": "https://api.githubcopilot.com/mcp/",
     "headers": {
       "Authorization": "Bearer ${input:github-token}"
     }
@@ -215,7 +215,7 @@ By working with this MCP configuration, students will understand:
 
 ### Server Not Appearing in Tools List
 1. Check `.vscode/mcp.json` for syntax errors
-2. Verify the URL is correct: `https://api.github.com/mcp`
+2. Verify the URL is correct: `https://api.githubcopilot.com/mcp/`
 3. Reload VS Code window (Cmd+Shift+P → "Developer: Reload Window")
 4. Check Copilot output for errors
 
