@@ -1,0 +1,96 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#e3f2fd', 'primaryTextColor': '#1565c0', 'primaryBorderColor': '#1565c0', 'lineColor': '#455a64', 'secondaryColor': '#fff3e0', 'tertiaryColor': '#f3e5f5'}}}%%
+flowchart TD
+    subgraph Client["Client Layer"]
+        REQ["HTTP Request<br/>Port 3000"]
+    end
+
+    subgraph Middleware["Middleware Layer"]
+        direction LR
+        HELMET["helmet<br/>Security Headers"]
+        CORS["cors<br/>Cross-Origin"]
+        MORGAN["morgan<br/>Request Logging"]
+    end
+
+    subgraph Routes["Routes Layer - Express Router"]
+        HEALTH["/health<br/>GET - Health Check"]
+
+        subgraph TipsAPI["Tips API Endpoints"]
+            GET_ALL["GET /api/tips<br/>Get All Tips"]
+            POST_TIP["POST /api/tips<br/>Create Tip"]
+            GET_RANDOM["GET /api/tips/random<br/>Random Tip"]
+            GET_ID["GET /api/tips/:id<br/>Get by ID"]
+            PUT_ID["PUT /api/tips/:id<br/>Update Tip"]
+            DELETE_ID["DELETE /api/tips/:id<br/>Delete Tip"]
+            GET_TOPIC["GET /api/tips/topic/:topic<br/>Filter by Topic"]
+        end
+    end
+
+    subgraph Controller["Controller Layer"]
+        TIP_CTRL["tipController<br/>Request/Response Handling"]
+    end
+
+    subgraph Service["Service Layer"]
+        TIP_SVC["tipService<br/>Business Logic"]
+    end
+
+    subgraph Data["Data Layer"]
+        JSON[("tips.json<br/>JSON File Storage")]
+    end
+
+    subgraph ErrorHandler["Error Handling"]
+        ERR["errorHandler<br/>Global Error Middleware"]
+    end
+
+    %% Flow connections
+    REQ --> HELMET
+    HELMET --> CORS
+    CORS --> MORGAN
+    MORGAN --> HEALTH
+    MORGAN --> TipsAPI
+
+    GET_ALL --> TIP_CTRL
+    POST_TIP --> TIP_CTRL
+    GET_RANDOM --> TIP_CTRL
+    GET_ID --> TIP_CTRL
+    PUT_ID --> TIP_CTRL
+    DELETE_ID --> TIP_CTRL
+    GET_TOPIC --> TIP_CTRL
+
+    TIP_CTRL --> TIP_SVC
+    TIP_SVC --> JSON
+    JSON --> TIP_SVC
+    TIP_SVC --> TIP_CTRL
+    TIP_CTRL --> REQ
+
+    %% Error flow
+    TIP_CTRL -.->|"Error"| ERR
+    TIP_SVC -.->|"Error"| ERR
+    ERR -.->|"Error Response"| REQ
+
+    %% Styling
+    style Client fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#01579b
+    style Middleware fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style Routes fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style TipsAPI fill:#c8e6c9,stroke:#388e3c,stroke-width:1px
+    style Controller fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#7b1fa2
+    style Service fill:#fce4ec,stroke:#c2185b,stroke-width:2px,color:#c2185b
+    style Data fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#1565c0
+    style ErrorHandler fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#c62828
+
+    style REQ fill:#4fc3f7,stroke:#0277bd,stroke-width:2px,color:#01579b
+    style HELMET fill:#ffcc80,stroke:#ef6c00,stroke-width:1px
+    style CORS fill:#ffcc80,stroke:#ef6c00,stroke-width:1px
+    style MORGAN fill:#ffcc80,stroke:#ef6c00,stroke-width:1px
+    style HEALTH fill:#a5d6a7,stroke:#388e3c,stroke-width:1px
+    style TIP_CTRL fill:#ce93d8,stroke:#7b1fa2,stroke-width:2px
+    style TIP_SVC fill:#f48fb1,stroke:#c2185b,stroke-width:2px
+    style JSON fill:#90caf9,stroke:#1565c0,stroke-width:2px
+    style ERR fill:#ef9a9a,stroke:#c62828,stroke-width:1px
+
+    style GET_ALL fill:#81c784,stroke:#388e3c
+    style POST_TIP fill:#81c784,stroke:#388e3c
+    style GET_RANDOM fill:#81c784,stroke:#388e3c
+    style GET_ID fill:#81c784,stroke:#388e3c
+    style PUT_ID fill:#81c784,stroke:#388e3c
+    style DELETE_ID fill:#81c784,stroke:#388e3c
+    style GET_TOPIC fill:#81c784,stroke:#388e3c

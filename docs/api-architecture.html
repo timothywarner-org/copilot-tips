@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copilot Tips API Architecture</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        .diagram-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .mermaid {
+            display: flex;
+            justify-content: center;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        .client { background: #e1f5fe; border: 2px solid #01579b; }
+        .middleware { background: #fff3e0; border: 2px solid #e65100; }
+        .routes { background: #e8f5e9; border: 2px solid #2e7d32; }
+        .controller { background: #f3e5f5; border: 2px solid #7b1fa2; }
+        .service { background: #fce4ec; border: 2px solid #c2185b; }
+        .data { background: #e3f2fd; border: 2px solid #1565c0; }
+        .error { background: #ffebee; border: 2px solid #c62828; }
+
+        footer {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Copilot Tips API Architecture</h1>
+        <p class="subtitle">Express.js REST API - Layered Architecture Pattern</p>
+
+        <div class="diagram-container">
+            <div class="mermaid">
+flowchart TD
+    subgraph Client["Client Layer"]
+        REQ["HTTP Request<br/>Port 3000"]
+    end
+
+    subgraph Middleware["Middleware Layer"]
+        direction LR
+        HELMET["helmet<br/>Security Headers"]
+        CORS["cors<br/>Cross-Origin"]
+        MORGAN["morgan<br/>Request Logging"]
+    end
+
+    subgraph Routes["Routes Layer - Express Router"]
+        HEALTH["/health<br/>GET - Health Check"]
+
+        subgraph TipsAPI["Tips API Endpoints"]
+            GET_ALL["GET /api/tips<br/>Get All Tips"]
+            POST_TIP["POST /api/tips<br/>Create Tip"]
+            GET_RANDOM["GET /api/tips/random<br/>Random Tip"]
+            GET_ID["GET /api/tips/:id<br/>Get by ID"]
+            PUT_ID["PUT /api/tips/:id<br/>Update Tip"]
+            DELETE_ID["DELETE /api/tips/:id<br/>Delete Tip"]
+            GET_TOPIC["GET /api/tips/topic/:topic<br/>Filter by Topic"]
+        end
+    end
+
+    subgraph Controller["Controller Layer"]
+        TIP_CTRL["tipController<br/>Request/Response Handling"]
+    end
+
+    subgraph Service["Service Layer"]
+        TIP_SVC["tipService<br/>Business Logic"]
+    end
+
+    subgraph Data["Data Layer"]
+        JSON[("tips.json<br/>JSON File Storage")]
+    end
+
+    subgraph ErrorHandler["Error Handling"]
+        ERR["errorHandler<br/>Global Error Middleware"]
+    end
+
+    REQ --> HELMET
+    HELMET --> CORS
+    CORS --> MORGAN
+    MORGAN --> HEALTH
+    MORGAN --> TipsAPI
+
+    GET_ALL --> TIP_CTRL
+    POST_TIP --> TIP_CTRL
+    GET_RANDOM --> TIP_CTRL
+    GET_ID --> TIP_CTRL
+    PUT_ID --> TIP_CTRL
+    DELETE_ID --> TIP_CTRL
+    GET_TOPIC --> TIP_CTRL
+
+    TIP_CTRL --> TIP_SVC
+    TIP_SVC --> JSON
+    JSON --> TIP_SVC
+    TIP_SVC --> TIP_CTRL
+    TIP_CTRL --> REQ
+
+    TIP_CTRL -.->|"Error"| ERR
+    TIP_SVC -.->|"Error"| ERR
+    ERR -.->|"Error Response"| REQ
+
+    style Client fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#01579b
+    style Middleware fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
+    style Routes fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style TipsAPI fill:#c8e6c9,stroke:#388e3c,stroke-width:1px
+    style Controller fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#7b1fa2
+    style Service fill:#fce4ec,stroke:#c2185b,stroke-width:2px,color:#c2185b
+    style Data fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#1565c0
+    style ErrorHandler fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#c62828
+
+    style REQ fill:#4fc3f7,stroke:#0277bd,stroke-width:2px,color:#01579b
+    style HELMET fill:#ffcc80,stroke:#ef6c00,stroke-width:1px
+    style CORS fill:#ffcc80,stroke:#ef6c00,stroke-width:1px
+    style MORGAN fill:#ffcc80,stroke:#ef6c00,stroke-width:1px
+    style HEALTH fill:#a5d6a7,stroke:#388e3c,stroke-width:1px
+    style TIP_CTRL fill:#ce93d8,stroke:#7b1fa2,stroke-width:2px
+    style TIP_SVC fill:#f48fb1,stroke:#c2185b,stroke-width:2px
+    style JSON fill:#90caf9,stroke:#1565c0,stroke-width:2px
+    style ERR fill:#ef9a9a,stroke:#c62828,stroke-width:1px
+
+    style GET_ALL fill:#81c784,stroke:#388e3c
+    style POST_TIP fill:#81c784,stroke:#388e3c
+    style GET_RANDOM fill:#81c784,stroke:#388e3c
+    style GET_ID fill:#81c784,stroke:#388e3c
+    style PUT_ID fill:#81c784,stroke:#388e3c
+    style DELETE_ID fill:#81c784,stroke:#388e3c
+    style GET_TOPIC fill:#81c784,stroke:#388e3c
+            </div>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color client"></div>
+                    <span>Client Layer</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color middleware"></div>
+                    <span>Middleware</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color routes"></div>
+                    <span>Routes</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color controller"></div>
+                    <span>Controller</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color service"></div>
+                    <span>Service</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color data"></div>
+                    <span>Data Layer</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color error"></div>
+                    <span>Error Handler</span>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Copilot Tips API - Layered Architecture Diagram</p>
+        </footer>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#e3f2fd',
+                primaryTextColor: '#333',
+                primaryBorderColor: '#1565c0',
+                lineColor: '#455a64',
+                secondaryColor: '#fff3e0',
+                tertiaryColor: '#f3e5f5',
+                fontSize: '14px'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis',
+                rankSpacing: 50,
+                nodeSpacing: 30
+            }
+        });
+    </script>
+</body>
+</html>

@@ -8,7 +8,19 @@
       "mcp__github__get_me",
       "mcp__github__search_repositories",
       "mcp__github__list_issues",
-      "mcp__github__issue_write"
+      "mcp__github__issue_write",
+      "Bash(gh repo edit:*)",
+      "Bash(gh label create:*)",
+      "mcp__mermaid__mermaid_preview",
+      "Bash(git checkout:*)",
+      "Bash(gh repo view:*)",
+      "Bash(cat:*)",
+      "Bash(gh label list:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr edit:*)"
     ]
   }
 }
