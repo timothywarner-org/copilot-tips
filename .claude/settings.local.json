@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm install)"
+      "Bash(npm install)",
+      "Bash(npm test:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)",
+      "mcp__github__get_me",
+      "mcp__github__search_repositories",
+      "mcp__github__list_issues",
+      "mcp__github__issue_write"
     ]
   }
 }

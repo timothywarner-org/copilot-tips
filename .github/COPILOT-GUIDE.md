@@ -43,7 +43,7 @@ Specialized AI agents configured with tools and instructions:
 ### Coding Standards (`.github/instructions/`)
 Detailed style guides for specific aspects of the project:
 
-1. **[javascript-standards.md](.github/instructions/javascript-standards.md)** (`applyTo: "**/*.js"`)
+1. **[javascript-standards.instructions.md](.github/instructions/javascript-standards.instructions.md)** (`applyTo: "**/*.js"`)
    - ES6 modules and imports
    - Async/await patterns
    - Function definitions and JSDoc
@@ -55,7 +55,7 @@ Detailed style guides for specific aspects of the project:
    - Comments and documentation
    - JSON data structure rules
 
-2. **[testing-standards.md](.github/instructions/testing-standards.md)** (`applyTo: "tests/**/*.js"`)
+2. **[testing-standards.instructions.md](.github/instructions/testing-standards.instructions.md)** (`applyTo: "tests/**/*.js"`)
    - Test file structure and organization
    - Assertion patterns and chai usage
    - HTTP testing with chai-http
@@ -111,17 +111,17 @@ Use these when creating new files or referencing in code:
 
 ```
 .github/
-├── copilot-instructions.md        # Main guidance (required)
+├── copilot-instructions.md              # Main guidance (required)
 ├── prompts/
-│   ├── create-tip.md              # Tip creation workflow
-│   ├── debug-api.md               # API debugging guide
-│   └── plan-feature.md            # Feature planning
+│   ├── create-tip.md                    # Tip creation workflow
+│   ├── debug-api.md                     # API debugging guide
+│   └── plan-feature.md                  # Feature planning
 ├── agents/
-│   ├── tip-creator.md             # Tip creation agent
-│   └── api-tester.md              # API testing agent
+│   ├── tip-creator.md                   # Tip creation agent
+│   └── api-tester.md                    # API testing agent
 └── instructions/
-    ├── javascript-standards.md    # JS/Node.js standards
-    └── testing-standards.md       # Mocha/Chai standards
+    ├── javascript-standards.instructions.md    # JS/Node.js standards
+    └── testing-standards.instructions.md       # Mocha/Chai standards
 ```
 
 ## Example: Getting Help from Copilot
@@ -167,5 +167,5 @@ When adding new prompt files, agents, or standards:
 
 ---
 
-Last updated: January 6, 2026  
+Last updated: January 6, 2026
 For the copilot-tips REST API teaching project
