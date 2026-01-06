@@ -1,3 +1,4 @@
+// Copilot Tips API - O'Reilly Course Demo
 /**
  * Entry point for the Copilot Tips API server
  * Loads environment variables and starts the Express server
