@@ -9,12 +9,16 @@ import morgan from 'morgan';
 
 import routes from './routes/index.js';
 import errorHandler from './middleware/errorHandler.js';
+import rateLimiter from './middleware/rateLimiter.js';
 
 const app = express();
 
 // Security middleware
 app.use(helmet());
 app.use(cors());
+
+// Rate limiting middleware
+app.use('/api', rateLimiter);
 
 // Logging middleware
 app.use(morgan('dev'));
