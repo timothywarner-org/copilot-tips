@@ -20,15 +20,6 @@ const limiter = rateLimit({
   },
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: true, // Enable the `X-RateLimit-*` headers for backwards compatibility
-  handler: (req, res) => {
-    console.log('⚠️ Rate limit exceeded for IP:', req.ip);
-    res.status(429).json({
-      error: {
-        message: 'Too many requests. Please try again in 15 minutes.',
-        status: 429
-      }
-    });
-  }
 });
 
 export default limiter;
