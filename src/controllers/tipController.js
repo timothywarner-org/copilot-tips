@@ -75,6 +75,22 @@ export const getByTopic = async (req, res, next) => {
 };
 
 /**
+ * Get tip statistics
+ */
+export const getStats = async (req, res, next) => {
+  try {
+    console.log('📊 Fetching tip statistics...');
+    const stats = await tipService.getStats();
+    console.log('✅ Tip statistics fetched successfully');
+    res.json(stats);
+  } catch (error) {
+    console.log('❌ Error fetching tip statistics:', error.message);
+    next(error);
+  }
+};
+
+
+/**
  * Create a new tip
  */
 export const create = async (req, res, next) => {
