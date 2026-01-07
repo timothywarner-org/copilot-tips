@@ -10,6 +10,7 @@ const router = express.Router();
 // GET routes (primary focus for the course)
 router.get('/', tipController.getAll);
 router.get('/random', tipController.getRandom);
+router.get('/stats', tipController.getStats);
 router.get('/topic/:topic', tipController.getByTopic);
 router.get('/:id', tipController.getById);
 

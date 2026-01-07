@@ -25,6 +25,16 @@ async function readTips() {
   }
 }
 
+async function readTipsFile() {
+  try {
+    const data = await readFile(DATA_FILE, 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    console.log('⚠️ Could not read full tips file, returning empty data');
+    return { tips: [], metadata: { topics: [] } };
+  }
+}
+
 /**
  * Write tips to JSON file
  */
@@ -113,4 +123,32 @@ export const remove = async (id) => {
   tips.splice(index, 1);
   await writeTips(tips);
   return true;
+};
+
+/**
+ * Get tip statistics grouped by topic
+ */
+export const getStats = async () => {
+  const fileData = await readTipsFile();
+  const tips = fileData.tips || [];
+  const topics = fileData.metadata?.topics || [];
+
+  const byTopic = {};
+  const total = tips.length;
+
+  for (const topic of topics) {
+    byTopic[topic] = 0;
+  }
+
+  for (const tip of tips) {
+    const topic = tip.topic?.toLowerCase();
+    if (topic && byTopic.hasOwnProperty(topic)) {
+      byTopic[topic]++;
+    }
+  }
+
+  return {
+    total,
+    byTopic
+  };
 };
