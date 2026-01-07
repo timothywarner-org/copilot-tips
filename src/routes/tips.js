@@ -7,6 +7,9 @@ import * as tipController from '../controllers/tipController.js';
 
 const router = express.Router();
 
+//GET tip stats by topic 
+router.get('/stats', tipController.getCountByTopic);
+
 // GET routes (primary focus for the course)
 router.get('/', tipController.getAll);
 router.get('/random', tipController.getRandom);
@@ -17,5 +20,7 @@ router.get('/:id', tipController.getById);
 router.post('/', tipController.create);
 router.put('/:id', tipController.update);
 router.delete('/:id', tipController.remove);
+
+
 
 export default router;

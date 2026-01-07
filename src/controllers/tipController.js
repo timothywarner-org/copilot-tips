@@ -128,3 +128,31 @@ export const remove = async (req, res, next) => {
     next(error);
   }
 };
+
+//get tips count by topic
+export const getCountByTopic = async (req, res, next) => {
+  try {
+    const tips = await tipService.getAll();
+
+    const byTopic = {};
+
+    // Loop through all tips to count topics dynamically
+    tips.forEach(tip => {
+      if (tip.topic) {
+        const topic = tip.topic.toLowerCase(); // lowercase for consistency
+        if (!byTopic[topic]) {
+          byTopic[topic] = 0;
+        }
+        byTopic[topic]++;
+      }
+    });
+
+    res.json({
+      total: tips.length,
+      byTopic
+    });
+  } catch (error) {
+    console.log('❌ Error fetching tips count by topic:', error.message);
+    next(error);
+  }
+}
