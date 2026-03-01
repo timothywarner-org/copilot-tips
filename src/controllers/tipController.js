@@ -3,16 +3,22 @@
  * Includes emoji logging for fun debugging experience
  */
 import * as tipService from '../services/tipService.js';
+import { parsePagination } from '../utils/pagination.js';
 
 /**
- * Get all tips
+ * Get all tips (paginated)
  */
 export const getAll = async (req, res, next) => {
   try {
-    console.log('📝 Fetching all tips...');
-    const tips = await tipService.getAll();
-    console.log(`✅ Found ${tips.length} tips`);
-    res.json(tips);
+    const { page, limit } = parsePagination(req.query, { page: 1, limit: 10 });
+
+    console.log(`📝 Fetching tips... page=${page}, limit=${limit}`);
+
+    const result = await tipService.getAll({ page, limit });
+
+    console.log(`✅ Returned ${result.data.length} tips (total ${result.pagination.totalCount})`);
+
+    res.json(result);
   } catch (error) {
     console.log('❌ Error fetching tips:', error.message);
     next(error);
