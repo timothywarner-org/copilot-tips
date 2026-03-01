@@ -5,6 +5,7 @@
 import { readFile, writeFile } from 'fs/promises';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { paginateArray } from '../utils/pagination.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -18,7 +19,7 @@ async function readTips() {
     const data = await readFile(DATA_FILE, 'utf8');
     const parsed = JSON.parse(data);
     // Handle both array format and {tips: []} format
-    return Array.isArray(parsed) ? parsed : (parsed.tips || []);
+    return Array.isArray(parsed) ? parsed : parsed.tips || [];
   } catch (error) {
     console.log('⚠️ Could not read tips file, returning empty array');
     return [];
@@ -33,10 +34,18 @@ async function writeTips(tips) {
 }
 
 /**
- * Get all tips
+ * Get all tips (optionally paginated)
+ *
+ * If pagination is provided -> returns { data, pagination }
+ * Else (legacy) -> returns full array
  */
-export const getAll = async () => {
-  return readTips();
+export const getAll = async (options = undefined) => {
+  const tips = await readTips();
+
+  if (!options) return tips;
+
+  const { page = 1, limit = 10 } = options;
+  return paginateArray(tips, { page, limit });
 };
 
 /**
@@ -52,26 +61,32 @@ export const getRandom = async () => {
 /**
  * Get tip by ID
  */
-export const getById = async (id) => {
+export const getById = async id => {
   const tips = await readTips();
   // Support both string and number IDs
   return tips.find(tip => String(tip.id) === String(id));
 };
 
 /**
- * Get tips by topic
+ * Get tips by topic (optionally paginated)
+ *
+ * If options is provided -> returns { data, pagination }
+ * Else -> returns array
  */
-export const getByTopic = async (topic) => {
+export const getByTopic = async (topic, options = undefined) => {
   const tips = await readTips();
-  return tips.filter(tip =>
-    tip.topic?.toLowerCase() === topic.toLowerCase()
-  );
+  const filtered = tips.filter(tip => tip.topic?.toLowerCase() === topic.toLowerCase());
+
+  if (!options) return filtered;
+
+  const { page = 1, limit = 10 } = options;
+  return paginateArray(filtered, { page, limit });
 };
 
 /**
  * Create a new tip
  */
-export const create = async (data) => {
+export const create = async data => {
   const tips = await readTips();
   const newTip = {
     id: String(tips.length + 1),
@@ -105,7 +120,7 @@ export const update = async (id, data) => {
 /**
  * Delete a tip
  */
-export const remove = async (id) => {
+export const remove = async id => {
   const tips = await readTips();
   const index = tips.findIndex(tip => String(tip.id) === String(id));
   if (index === -1) return false;
